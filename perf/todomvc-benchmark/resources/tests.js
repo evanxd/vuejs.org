@@ -12,26 +12,7 @@ Suites.push({
         });
     },
     tests: [
-        new BenchmarkTestStep('Adding' + numberOfItemsToAdd + 'Items', function (newTodo, contentWindow, contentDocument) {
-            var app = contentWindow.app;
-            for (var i = 0; i < numberOfItemsToAdd; i++) {
-                var keyupEvent = document.createEvent('Event');
-                keyupEvent.initEvent('keyup', true, true);
-                keyupEvent.keyCode = 13;
-                app.newTodo = 'Something to do ' + i;
-                newTodo.dispatchEvent(keyupEvent)
-            }
-        }),
-        new BenchmarkTestStep('CompletingAllItems', function (newTodo, contentWindow, contentDocument) {
-            var checkboxes = contentDocument.querySelectorAll('.toggle');
-            for (var i = 0; i < checkboxes.length; i++)
-                checkboxes[i].click();
-        }),
-        new BenchmarkTestStep('DeletingAllItems', function (newTodo, contentWindow, contentDocument) {
-            var deleteButtons = contentDocument.querySelectorAll('.destroy');
-            for (var i = 0; i < deleteButtons.length; i++)
-                deleteButtons[i].click();
-        })
+        new BenchmarkTestStep('startup time', function () {})
     ]
 });
 
@@ -47,26 +28,7 @@ Suites.push({
         });
     },
     tests: [
-        new BenchmarkTestStep('Adding' + numberOfItemsToAdd + 'Items', function (newTodo, contentWindow, contentDocument) {
-            var appView = contentWindow.appView;
-            for (var i = 0; i < numberOfItemsToAdd; i++) {
-                var keypressEvent = document.createEvent('Event');
-                keypressEvent.initEvent('keypress', true, true);
-                keypressEvent.which = 13;
-                newTodo.value = 'Something to do ' + i;
-                newTodo.dispatchEvent(keypressEvent)
-            }
-        }),
-        new BenchmarkTestStep('CompletingAllItems', function (newTodo, contentWindow, contentDocument) {
-            var checkboxes = contentDocument.querySelectorAll('.toggle');
-            for (var i = 0; i < checkboxes.length; i++)
-                checkboxes[i].click();
-        }),
-        new BenchmarkTestStep('DeletingAllItems', function (newTodo, contentWindow, contentDocument) {
-            var deleteButtons = contentDocument.querySelectorAll('.destroy');
-            for (var i = 0; i < deleteButtons.length; i++)
-                deleteButtons[i].click();
-        })
+        new BenchmarkTestStep('startup time', function () {})
     ]
 });
 
@@ -81,26 +43,7 @@ Suites.push({
         });
     },
     tests: [
-        new BenchmarkTestStep('Adding' + numberOfItemsToAdd + 'Items', function (newTodo, contentWindow, contentDocument) {
-            var viewModel = contentWindow.viewModel;
-            for (var i = 0; i < numberOfItemsToAdd; i++) {
-                var keyupEvent = document.createEvent('Event');
-                keyupEvent.initEvent('keyup', true, true);
-                keyupEvent.keyCode = 13;
-                viewModel.current('Something to do ' + i);
-                newTodo.dispatchEvent(keyupEvent);
-            }
-        }),
-        new BenchmarkTestStep('CompletingAllItems', function (newTodo, contentWindow, contentDocument) {
-            var checkboxes = contentDocument.querySelectorAll('.toggle');
-            for (var i = 0; i < checkboxes.length; i++)
-                checkboxes[i].click();
-        }),
-        new BenchmarkTestStep('DeletingAllItems', function (newTodo, contentWindow, contentDocument) {
-            var deleteButtons = contentDocument.querySelectorAll('.destroy');
-            for (var i = 0; i < deleteButtons.length; i++)
-                deleteButtons[i].click();
-        })
+        new BenchmarkTestStep('startup time', function () {})
     ]
 });
 
@@ -125,29 +68,7 @@ Suites.push({
         });
     },
     tests: [
-        new BenchmarkTestStep('Adding' + numberOfItemsToAdd + 'Items', function (params, contentWindow) {
-            for (var i = 0; i < numberOfItemsToAdd; i++) {
-                params.emberRun(function () { params.views["new-todo"].set('value', 'Something to do' + i); });
-                params.emberRun(function () {
-                    var keyupEvent = document.createEvent('Event');
-                    keyupEvent.initEvent('keyup', true, true);
-                    keyupEvent.keyCode = 13;
-                    params.newTodo.dispatchEvent(keyupEvent)
-                });
-            }
-        }),
-        new BenchmarkTestStep('CompletingAllItems', function (params, contentWindow, contentDocument) {
-            var checkboxes = contentDocument.querySelectorAll('.ember-checkbox');
-            for (var i = 0; i < checkboxes.length; i++) {
-                var view = params.views[checkboxes[i].id];
-                params.emberRun(function () { view.set('checked', true); });
-            }
-        }),
-        new BenchmarkTestStep('DeletingItems', function (params, contentWindow, contentDocument) {
-            var deleteButtons = contentDocument.querySelectorAll('.destroy');
-            for (var i = 0; i < deleteButtons.length; i++)
-                params.emberRun(function () { deleteButtons[i].click(); });
-        })
+        new BenchmarkTestStep('startup time', function () {})
     ]
 });
 
@@ -162,27 +83,7 @@ Suites.push({
         });
     },
     tests: [
-        new BenchmarkTestStep('Adding' + numberOfItemsToAdd + 'Items', function (newTodo, contentWindow, contentDocument) {
-            var submitEvent = document.createEvent('Event');
-            submitEvent.initEvent('submit', true, true);
-            for (var i = 0; i < numberOfItemsToAdd; i++) {
-                var inputEvent = document.createEvent('Event');
-                inputEvent.initEvent('input', true, true);
-                newTodo.value = 'Something to do ' + i;
-                newTodo.dispatchEvent(inputEvent);
-                newTodo.form.dispatchEvent(submitEvent);
-            }
-        }),
-        new BenchmarkTestStep('CompletingAllItems', function (newTodo, contentWindow, contentDocument) {
-            var checkboxes = contentDocument.querySelectorAll('.toggle');
-            for (var i = 0; i < checkboxes.length; i++)
-                checkboxes[i].click();
-        }),
-        new BenchmarkTestStep('DeletingAllItems', function (newTodo, contentWindow, contentDocument) {
-            var deleteButtons = contentDocument.querySelectorAll('.destroy');
-            for (var i = 0; i < deleteButtons.length; i++)
-                deleteButtons[i].click();
-        })
+        new BenchmarkTestStep('startup time', function () {})
     ]
 });
 
@@ -198,25 +99,7 @@ Suites.push({
         });
     },
     tests: [
-        new BenchmarkTestStep('Adding' + numberOfItemsToAdd + 'Items', function (newTodo, contentWindow, contentDocument) {
-            for (var i = 0; i < numberOfItemsToAdd; i++) {
-                var keydownEvent = document.createEvent('Event');
-                keydownEvent.initEvent('keydown', true, true);
-                keydownEvent.which = 13; // VK_ENTER
-                newTodo.value = 'Something to do ' + i;
-                newTodo.dispatchEvent(keydownEvent);
-            }
-        }),
-        new BenchmarkTestStep('CompletingAllItems', function (newTodo, contentWindow, contentDocument) {
-            var checkboxes = contentDocument.querySelectorAll('.toggle');
-            for (var i = 0; i < checkboxes.length; i++)
-                checkboxes[i].click();
-        }),
-        new BenchmarkTestStep('DeletingAllItems', function (newTodo, contentWindow, contentDocument) {
-            var deleteButtons = contentDocument.querySelectorAll('.destroy');
-            for (var i = 0; i < deleteButtons.length; i++)
-                deleteButtons[i].click();
-        })
+        new BenchmarkTestStep('startup time', function () {})
     ]
 });
 
@@ -231,26 +114,7 @@ Suites.push({
         });
     },
     tests: [
-        new BenchmarkTestStep('Adding' + numberOfItemsToAdd + 'Items', function (newTodo, contentWindow, contentDocument) {
-            var todomvc = contentWindow.todomvc;
-            for (var i = 0; i < numberOfItemsToAdd; i++) {
-                var keydownEvent = document.createEvent('Event');
-                keydownEvent.initEvent('keydown', true, true);
-                keydownEvent.which = 13; // VK_ENTER
-                newTodo.value = 'Something to do ' + i;
-                newTodo.dispatchEvent(keydownEvent);
-            }
-        }),
-        new BenchmarkTestStep('CompletingAllItems', function (newTodo, contentWindow, contentDocument) {
-            var checkboxes = contentDocument.querySelectorAll('.toggle');
-            for (var i = 0; i < checkboxes.length; i++)
-                checkboxes[i].click();
-        }),
-        new BenchmarkTestStep('DeletingAllItems', function (newTodo, contentWindow, contentDocument) {
-            var deleteButtons = contentDocument.querySelectorAll('.destroy');
-            for (var i = 0; i < deleteButtons.length; i++)
-                deleteButtons[i].click();
-        })
+        new BenchmarkTestStep('startup time', function () {})
     ]
 });
 
@@ -265,24 +129,6 @@ Suites.push({
         });
     },
     tests: [
-        new BenchmarkTestStep('Adding' + numberOfItemsToAdd + 'Items', function (newTodo, contentWindow, contentDocument) {
-            for (var i = 0; i < numberOfItemsToAdd; i++) {
-                var keydownEvent = document.createEvent('Event');
-                keydownEvent.initEvent('keydown', true, true);
-                keydownEvent.which = 13; // VK_ENTER
-                newTodo.value = 'Something to do ' + i;
-                newTodo.dispatchEvent(keydownEvent);
-            }
-        }),
-        new BenchmarkTestStep('CompletingAllItems', function (newTodo, contentWindow, contentDocument) {
-            var checkboxes = contentDocument.querySelectorAll('.toggle');
-            for (var i = 0; i < checkboxes.length; i++)
-                checkboxes[i].click();
-        }),
-        new BenchmarkTestStep('DeletingAllItems', function (newTodo, contentWindow, contentDocument) {
-            var deleteButtons = contentDocument.querySelectorAll('.destroy');
-            for (var i = 0; i < deleteButtons.length; i++)
-                deleteButtons[i].click();
-        })
+        new BenchmarkTestStep('startup time', function () {})
     ]
 });
