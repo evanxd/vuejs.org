@@ -223,4 +223,16 @@ BenchmarkRunner.prototype._finalize = function () {
 
     // FIXME: This should be done when we start running tests.
     this._measuredValues = {};
+
+    var result = document.querySelector('#result').innerHTML;
+    if (!localStorage.resultLength) {
+      localStorage.resultLength = 0;
+    }
+    var length = parseInt(localStorage.resultLength);
+    localStorage.setItem('result' + length, result);
+    localStorage.resultLength = (length + 1);
+
+    if (length < 100) {
+        location.reload();
+    }
 }

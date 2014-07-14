@@ -70,6 +70,7 @@ function createUIForSuites(suites, onstep, onrun) {
     control.appendChild(button);
 
     var button = runButton = document.createElement('button');
+    button.id = 'run'
     button.textContent = 'Run';
     button.onclick = onrun;
     control.appendChild(button);
@@ -155,10 +156,12 @@ function startTest() {
         }
         var res = JSON.stringify(results, null, 4),
             pre = document.createElement('pre')
-        pre.textContent = runs.length + ' runs average:\n' + res + '\n'
-            + 'See console output for more details.'
+        pre.id = 'result';
+        pre.textContent = res;
         document.body.appendChild(pre)
     }
+
+    document.querySelector('#run').dispatchEvent(new Event('click'));
 }
 
 window.addEventListener('load', startTest);

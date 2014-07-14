@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <title>show result</title>
+  </head>
+  <body>
+    <div id="result"></div>
+    <script>
+      var result = '';
+      var length = parseInt(localStorage.resultLength);
+
+      for (var i = 0; i < length; i++) {
+        result += localStorage.getItem('result' + i) + '<br>';
+      }
+      document.querySelector('#result').innerHTML = result;
+    </script>
+  </body>
+</html>
