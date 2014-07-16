@@ -7,6 +7,7 @@
     <div id="result"></div>
     <script>
       var results = [];
+      var result = '';
       var length = parseInt(localStorage.resultLength);
       var vue = 0;
       var backbone = 0;
@@ -18,9 +19,9 @@
       var ractive = 0;
 
       for (var i = 0; i < length; i++) {
-        results.push(
-          JSON.parse(localStorage.getItem('result' + i))
-        );
+        var item =  localStorage.getItem('result' + i);
+        result += '<div>' + item + '</div>';
+        results.push(JSON.parse(item));
       }
 
       results.forEach(function(result) {
@@ -43,16 +44,22 @@
       om = om / length;
       ractive = ractive / length;
 
-      document.querySelector('#result').innerHTML = JSON.stringify({
-        vue: vue,
-        backbone: backbone,
-        knockout: knockout,
-        ember: ember,
-        angular: angular,
-        react: react,
-        om: om,
-        ractive: ractive
-      });
+      result +=
+        '<div>length: ' + length + '</div>' +
+        '<div>' +
+          JSON.stringify({
+            vue: vue,
+            backbone: backbone,
+            knockout: knockout,
+            ember: ember,
+            angular: angular,
+            react: react,
+            om: om,
+            ractive: ractive
+          }) +
+        '</div>';
+
+      document.querySelector('#result').innerHTML = result;
     </script>
   </body>
 </html>
