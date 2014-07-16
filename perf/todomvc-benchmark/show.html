@@ -6,13 +6,53 @@
   <body>
     <div id="result"></div>
     <script>
-      var result = '';
+      var results = [];
       var length = parseInt(localStorage.resultLength);
+      var vue = 0;
+      var backbone = 0;
+      var knockout = 0;
+      var ember = 0;
+      var angular = 0;
+      var react = 0;
+      var om = 0;
+      var ractive = 0;
 
       for (var i = 0; i < length; i++) {
-        result += localStorage.getItem('result' + i) + '<br>';
+        results.push(
+          JSON.parse(localStorage.getItem('result' + i))
+        );
       }
-      document.querySelector('#result').innerHTML = result;
+
+      results.forEach(function(result) {
+        vue += result['Vue'];
+        backbone += result['Backbone'];
+        knockout += result['Knockout'];
+        ember += result['Ember'];
+        angular += result['Angular'];
+        react += result['React'];
+        om += result['Om'];
+        ractive += result['Ractive'];
+      });
+
+      vue = vue / length;
+      backbone = backbone / length;
+      knockout = knockout / length;
+      ember = ember / length;
+      angular = angular / length;
+      react = react / length;
+      om = om / length;
+      ractive = ractive / length;
+
+      document.querySelector('#result').innerHTML = JSON.stringify({
+        vue: vue,
+        backbone: backbone,
+        knockout: knockout,
+        ember: ember,
+        angular: angular,
+        react: react,
+        om: om,
+        ractive: ractive
+      });
     </script>
   </body>
 </html>
